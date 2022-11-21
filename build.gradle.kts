@@ -9,7 +9,7 @@ plugins {
 }
 
 group = "com.hyecheon"
-version = "0.0.1-SNAPSHOT"
+version = "0.0.1"
 java.sourceCompatibility = JavaVersion.VERSION_17
 
 configurations {
@@ -42,4 +42,9 @@ tasks.withType<KotlinCompile> {
 
 tasks.withType<Test> {
     useJUnitPlatform()
+}
+tasks {
+    bootJar {
+        archiveFileName.set("app-${archiveVersion}.jar")
+    }
 }
