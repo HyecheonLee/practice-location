@@ -3,6 +3,6 @@ spring:
     active: local
     group:
       local:
-        - common
+        - application-common
       prod:
-        - common
+        - application-common
