@@ -1,0 +1,23 @@
+version: "3.8"
+services:
+  practice-location-redis:
+    container_name: practice-location-redis
+    build:
+      dockerfile: Dockerfile
+      context: ./redis
+    image: practice-location-redis
+    ports:
+      - "6379:6379"
+  practice-location-database:
+    container_name: practice-location-database
+    build:
+      dockerfile: Dockerfile
+      context: ./database
+    image: practice-location-database
+    environment:
+      - MYSQL_DATABASE=practice-location
+      - MYSQL_ROOT_PASSWORD=${SPRING_DATASOURCE_PASSWORD}
+    volumes:
+      - ./database/config:/etc/mysql/conf.d
+    ports:
+      - "3307:3306"
